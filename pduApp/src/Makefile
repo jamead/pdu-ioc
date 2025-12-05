@@ -16,10 +16,10 @@ DBD += pdu.dbd
 pdu_DBD += base.dbd
 
 # Include dbd files from all support applications:
-#pdu_DBD += xxx.dbd
+pdu_DBD += pscCore.dbd
 
 # Add all the support libraries needed by this IOC
-#pdu_LIBS += xxx
+pdu_LIBS += pscCore 
 
 # pdu_registerRecordDeviceDriver.cpp derives from pdu.dbd
 pdu_SRCS += pdu_registerRecordDeviceDriver.cpp

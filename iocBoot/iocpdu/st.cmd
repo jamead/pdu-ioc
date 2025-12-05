@@ -2,7 +2,7 @@
 
 < envPaths
 
-epicsEnvSet("IOCNAME", "BPC")
+epicsEnvSet("IOCNAME", "PDU")
 
 cd "${TOP}"
 
@@ -16,12 +16,12 @@ var("PSCDebug", "5")
 # Listen on 0.0.0.0:1234  (pass zero for random port)
 # for messages coming from "device" localhost:5000
 
-createPSCUDP("pscudp1", "10.0.142.199", 5000, 1234)
+createPSCUDP("pscudp1", "10.0.142.106", 5000, 1234)
 #createPSCUDP("pscudp2", "10.0.142.187", 5000, 1235)
 
 ## Load record instances
-dbLoadRecords("db/bpc.db","P=$(IOCNAME), NO=1")
-#dbLoadRecords("db/bpc.db","P=$(IOCNAME), NO=2")
+dbLoadRecords("db/pdu.db","P=$(IOCNAME), NO=1")
+#dbLoadRecords("db/pdu.db","P=$(IOCNAME), NO=2")
 
 
 

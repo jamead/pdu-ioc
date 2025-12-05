@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-12-05 17:16:35 by mead-->
 <display version="2.0.0">
   <name>Startup</name>
   <widget type="group" version="3.0.0">
@@ -28,12 +29,13 @@
       <name>Action Button_62</name>
       <actions>
         <action type="open_display">
-          <description>Open Display</description>
           <file>PDU.bob</file>
           <macros>
-            <P>PDU:</P>
+            <P>PDU</P>
+            <N>1</N>
           </macros>
           <target>replace</target>
+          <description>Open Display</description>
         </action>
       </actions>
       <text>Start</text>

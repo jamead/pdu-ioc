@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-07-21 09:12:45 by diag-->
+<!--Saved on 2025-12-05 17:15:35 by mead-->
 <display version="2.0.0">
   <name>PDU1</name>
   <width>1000</width>
@@ -71,7 +71,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_368</name>
-    <pv_name>$(P)Current:PhaseA-I</pv_name>
+    <pv_name>$(P){$(N)}Current:PhaseA-I</pv_name>
     <x>111</x>
     <y>325</y>
     <width>84</width>
@@ -88,7 +88,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_369</name>
-    <pv_name>$(P)Current:PhaseB-I</pv_name>
+    <pv_name>$(P){$(N)}Current:PhaseB-I</pv_name>
     <x>111</x>
     <y>358</y>
     <width>84</width>
@@ -105,7 +105,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_370</name>
-    <pv_name>$(P)Current:PhaseC-I</pv_name>
+    <pv_name>$(P){$(N)}Current:PhaseC-I</pv_name>
     <x>111</x>
     <y>391</y>
     <width>84</width>
@@ -1645,7 +1645,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_372</name>
-    <pv_name>$(P)Serial:Number-I</pv_name>
+    <pv_name>$(P){$(N)}Serial:Number-I</pv_name>
     <x>309</x>
     <y>325</y>
     <width>84</width>
@@ -1662,7 +1662,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_373</name>
-    <pv_name>$(P)Model:Number-I</pv_name>
+    <pv_name>$(P){$(N)}Model:Number-I</pv_name>
     <x>309</x>
     <y>358</y>
     <width>84</width>
@@ -1679,7 +1679,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_374</name>
-    <pv_name>$(P)Firmware:Version-I</pv_name>
+    <pv_name>$(P){$(N)}Firmware:Version-I</pv_name>
     <x>309</x>
     <y>391</y>
     <width>84</width>
@@ -1792,7 +1792,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_375</name>
-    <pv_name>$(P)Temp:Front-I</pv_name>
+    <pv_name>$(P){$(N)}Temp:Front-I</pv_name>
     <x>507</x>
     <y>325</y>
     <width>84</width>
@@ -1809,7 +1809,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_376</name>
-    <pv_name>$(P)Temp:Rear-I</pv_name>
+    <pv_name>$(P){$(N)}Temp:Rear-I</pv_name>
     <x>507</x>
     <y>358</y>
     <width>84</width>
@@ -2022,7 +2022,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_378</name>
-    <pv_name>$(P)Frame:Start-I</pv_name>
+    <pv_name>$(P){$(N)}Frame:Start-I</pv_name>
     <x>507</x>
     <y>396</y>
     <width>84</width>
@@ -2039,7 +2039,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_379</name>
-    <pv_name>$(P)Frame:End-I</pv_name>
+    <pv_name>$(P){$(N)}Frame:End-I</pv_name>
     <x>704</x>
     <y>396</y>
     <width>84</width>
@@ -2139,7 +2139,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_20</name>
-    <pv_name>$(P)Watchdog:Flag-I</pv_name>
+    <pv_name>$(P){$(N)}Watchdog:Flag-I</pv_name>
     <x>604</x>
     <y>432</y>
     <width>185</width>

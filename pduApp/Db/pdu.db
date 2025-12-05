@@ -1,0 +1,160 @@
+record(bi, "$(P){$(NO)}:conn") {
+  field(DTYP, "PSC Ctrl Connected")
+  field(INP , "@pscudp$(NO)")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Disconnected")
+  field(ONAM, "Connected")
+  field(ZSV , "MAJOR")
+}
+
+record(bo, "$(P){$(NO)}:reconn") {
+  field(DTYP, "PSC Ctrl Reconnect")
+  field(OUT , "@pscudp$(NO)")
+  field(ZNAM, "Reconnect")
+  field(ONAM, "Reconnect")
+}
+
+
+# flush send to socket
+record(bo, "$(P){$(NO)}:send") {
+  field(DTYP, "PSC Ctrl Send All")
+  field(OUT , "@pscudp$(NO)")
+  field(ZNAM, "Send")
+  field(ONAM, "Send")
+}
+
+# writes the UDP packet to the PDU
+record(stringout, "$(P){$(NO)}:speak") {
+  field(VAL, "Status")         # loop is the packet data
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")   # 100 is the message number
+  field(FLNK, "$(P){$(NO)}:send")
+  field(SCAN, "1 second")
+}
+
+
+
+
+
+record(ai, "$(P){$(NO)}Frame:Start-I") {
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 0")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Current:PhaseA-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 4")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Current:PhaseB-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 8")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Current:PhaseC-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 12")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Ch1-Status-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 16")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Ch2-Status-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 20")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Ch3-Status-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 24")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Ch4-Status-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 28")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Rsvd1-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 32")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Rsvd2-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 36")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Temp:Front-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 40")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Temp:Rear-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 44")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Serial:Number-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 48")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Model:Number-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 52")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Firmware:Version-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 56")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Rsvd3-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 60")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Rsvd4-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 64")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Rsvd5-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 68")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai,"$(P){$(NO)}Watchdog:Flag-I"){
+    field(DTYP, "PSC Reg F32")
+    field(INP , "@pscudp$(NO) 15 72")
+    field(SCAN,"I/O Intr")
+}
+
+record(longin,"$(P){$(NO)}Frame:End-I"){
+    field(DTYP, "PSC Reg")
+    field(INP , "@pscudp$(NO) 15 76")
+    field(SCAN,"I/O Intr")
+}
+
+
+
