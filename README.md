@@ -4,6 +4,9 @@
 BTP PDUs control AC power to individual power supplies and monitor total AC current.  
 All PDUs are UL508A-certified and manufactured in a UL508A facility.
 
+Edmundo Gomez
+egomez1@bnl.gov
+
 There are **9 models** available in 2-output, 3-output, and 4-output configurations.
 
 ---
