@@ -1,4 +1,0 @@
-NAME=pdu-ioc
-PORT=4061
-USER=softioc
-HOST=$HOSTNAME
