@@ -23,18 +23,61 @@ record(bo, "$(P){$(NO)}:send") {
   field(ONAM, "Send")
 }
 
-# writes the UDP packet to the PDU
+# writes the UDP packet to the PDU to get status (1Hz)
 record(stringout, "$(P){$(NO)}:speak") {
-  field(VAL, "Status")         # loop is the packet data
+  field(VAL, "Status")        
   field(DTYP, "PSC Block")
-  field(OUT , "@pscudp$(NO) 100")   # 100 is the message number
+  field(OUT , "@pscudp$(NO) 100")   
   field(FLNK, "$(P){$(NO)}:send")
-  field(SCAN, "1 second")
+  #field(SCAN, "1 second")
+}
+
+
+# writes the UDP packet to the PDU
+record(stringout, "$(P){$(NO)}Ch1:State-SP") {
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")  
+  field(FLNK, "$(P){$(NO)}:send")
+}
+
+# writes the UDP packet to the PDU
+record(stringout, "$(P){$(NO)}Ch2:State-SP") {
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")  
+  field(FLNK, "$(P){$(NO)}:send")
+}
+
+# writes the UDP packet to the PDU
+record(stringout, "$(P){$(NO)}Ch3:State-SP") {
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")  
+  field(FLNK, "$(P){$(NO)}:send")
+}
+
+# writes the UDP packet to the PDU
+record(stringout, "$(P){$(NO)}Ch4:State-SP") {
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")  
+  field(FLNK, "$(P){$(NO)}:send")
+}
+
+record(stringout, "$(P){$(NO)}All:On-SP") {
+  field(VAL, "ALL-ON")        
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")   
+  field(FLNK, "$(P){$(NO)}:send")
+}
+
+record(stringout, "$(P){$(NO)}All:Off-SP") {
+  field(VAL, "ALL-OFF")        
+  field(DTYP, "PSC Block")
+  field(OUT , "@pscudp$(NO) 100")   
+  field(FLNK, "$(P){$(NO)}:send")
 }
 
 
 
-
+## 20 word status from PDU
 
 record(ai, "$(P){$(NO)}Frame:Start-I") {
     field(DTYP, "PSC Reg F32")
@@ -60,27 +103,35 @@ record(ai,"$(P){$(NO)}Current:PhaseC-I"){
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch1-Status-I"){
+record(longin,"$(P){$(NO)}Ch1:Status-I"){
     field(DTYP, "PSC Reg")
     field(INP , "@pscudp$(NO) 15 16")
+    field(PINI,"YES")    
+    field(VAL ,"16")       
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch2-Status-I"){
+record(longin,"$(P){$(NO)}Ch2:Status-I"){
     field(DTYP, "PSC Reg")
-    field(INP , "@pscudp$(NO) 15 20")
+    field(INP , "@pscudp$(NO) 15 20") 
+    field(PINI,"YES")    
+    field(VAL ,"16")        
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch3-Status-I"){
+record(longin,"$(P){$(NO)}Ch3:Status-I"){
     field(DTYP, "PSC Reg")
     field(INP , "@pscudp$(NO) 15 24")
+    field(PINI,"YES")    
+    field(VAL ,"16")      
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch4-Status-I"){
+record(longin,"$(P){$(NO)}Ch4:Status-I"){
     field(DTYP, "PSC Reg")
     field(INP , "@pscudp$(NO) 15 28")
+    field(PINI,"YES")    
+    field(VAL ,"16")      
     field(SCAN,"I/O Intr")
 }
 
@@ -120,8 +171,8 @@ record(longin,"$(P){$(NO)}Model:Number-I"){
     field(SCAN,"I/O Intr")
 }
 
-record(ai,"$(P){$(NO)}Firmware:Version-I"){
-    field(DTYP, "PSC Reg F32")
+record(longin,"$(P){$(NO)}Firmware:Version-I"){
+    field(DTYP, "PSC Reg")
     field(INP , "@pscudp$(NO) 15 56")
     field(SCAN,"I/O Intr")
 }
@@ -154,6 +205,153 @@ record(longin,"$(P){$(NO)}Frame:End-I"){
     field(DTYP, "PSC Reg")
     field(INP , "@pscudp$(NO) 15 76")
     field(SCAN,"I/O Intr")
+}
+
+
+
+## Parse Ch1:Status
+record(calc,"$(P){$(NO)}Ch1:IOC:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch1:Status-I CP")
+    field(CALC,"A&1")         # bit 0
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch1:Front:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch1:Status-I CP")
+    field(CALC,"(A>>1)&1")    # bit 1
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch1:Rear:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch1:Status-I CP")
+    field(CALC,"(A>>2)&1")    # bit 2
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch1:Relay-I"){
+    field(INPA,"$(P){$(NO)}Ch1:Status-I CP")
+    field(CALC,"(A>>3)&1")    # bit 3
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch1:AuxContactor-I"){
+    field(INPA,"$(P){$(NO)}Ch1:Status-I CP")
+    field(CALC,"(A>>4)&1")    # bit 4
+    field(PREC,"0")
+}
+
+
+
+## Parse Ch2:Status
+record(calc,"$(P){$(NO)}Ch2:IOC:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch2:Status-I CP")
+    field(CALC,"A&1")         # bit 0
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch2:Front:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch2:Status-I CP")
+    field(CALC,"(A>>1)&1")    # bit 1
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch2:Rear:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch2:Status-I CP")
+    field(CALC,"(A>>2)&1")    # bit 2
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch2:Relay-I"){
+    field(INPA,"$(P){$(NO)}Ch2:Status-I CP")
+    field(CALC,"(A>>3)&1")    # bit 3
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch2:AuxContactor-I"){
+    field(INPA,"$(P){$(NO)}Ch2:Status-I CP")
+    field(CALC,"(A>>4)&1")    # bit 4
+    field(PREC,"0")
+}
+
+
+
+## Parse Ch3:Status
+record(calc,"$(P){$(NO)}Ch3:IOC:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch3:Status-I CP")
+    field(CALC,"A&1")         # bit 0
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch3:Front:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch3:Status-I CP")
+    field(CALC,"(A>>1)&1")    # bit 1
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch3:Rear:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch3:Status-I CP")
+    field(CALC,"(A>>2)&1")    # bit 2
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch3:Relay-I"){
+    field(INPA,"$(P){$(NO)}Ch3:Status-I CP")
+    field(CALC,"(A>>3)&1")    # bit 3
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch3:AuxContactor-I"){
+    field(INPA,"$(P){$(NO)}Ch3:Status-I CP")
+    field(CALC,"(A>>4)&1")    # bit 4
+    field(PREC,"0")
+}
+
+
+## Parse Ch4:Status
+record(calc,"$(P){$(NO)}Ch4:IOC:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch4:Status-I CP")
+    field(CALC,"A&1")         # bit 0
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch4:Front:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch4:Status-I CP")
+    field(CALC,"(A>>1)&1")    # bit 1
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch4:Rear:Enable-I"){
+    field(INPA,"$(P){$(NO)}Ch4:Status-I CP")
+    field(CALC,"(A>>2)&1")    # bit 2
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch4:Relay-I"){
+    field(INPA,"$(P){$(NO)}Ch4:Status-I CP")
+    field(CALC,"(A>>3)&1")    # bit 3
+    field(PREC,"0")
+}
+
+
+record(calc,"$(P){$(NO)}Ch4:AuxContactor-I"){
+    field(INPA,"$(P){$(NO)}Ch4:Status-I CP")
+    field(CALC,"(A>>4)&1")    # bit 4
+    field(PREC,"0")
 }
 
 
