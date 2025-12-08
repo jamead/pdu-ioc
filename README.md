@@ -99,23 +99,23 @@ Startup behavior:
 
 | Index | Name | Type | Description |
 |-------|------|------|-------------|
-| 0 | Frame Start | UInt32 | Always **1000** |
+| 0 | Frame Start | Float | Always **1000** |
 | 1 | Current Phase A | Float | 0–99 A |
 | 2 | Current Phase B | Float | 0–99 A |
 | 3 | Current Phase C | Float | 0–99 A |
-| 4 | CH1 Status | UInt32 | Status register |
-| 5 | CH2 Status | UInt32 | Status register |
-| 6 | CH3 Status | UInt32 | Status register |
-| 7 | CH4 Status | UInt32 | Status register |
+| 4 | CH1 Status | Float | Status register |
+| 5 | CH2 Status | Float | Status register |
+| 6 | CH3 Status | Float | Status register |
+| 7 | CH4 Status | Float | Status register |
 | 8–9 | — | — | Not used |
 | 10 | Front Temp | Float | °C |
 | 11 | Rear Temp | Float | °C |
-| 12 | Serial Number | UInt32 | — |
-| 13 | Model | UInt32 | Last 4 digits |
-| 14 | Firmware | UInt32 | Version |
+| 12 | Serial Number | Float | — |
+| 13 | Model | Float | Last 4 digits |
+| 14 | Firmware | Float | Version |
 | 15–17 | — | — | Not used |
 | 18 | WDT Flag | Int | `1 = Hardware WDT tripped` |
-| 19 | Frame End | UInt32 | Always **1001** |
+| 19 | Frame End | Float | Always **1001** |
 
 ---
 
