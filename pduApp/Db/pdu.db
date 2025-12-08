@@ -103,32 +103,32 @@ record(ai,"$(P){$(NO)}Current:PhaseC-I"){
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch1:Status-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Ch1:Status-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 16")
     field(PINI,"YES")    
     field(VAL ,"16")       
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch2:Status-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Ch2:Status-I"){  
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 20") 
     field(PINI,"YES")    
     field(VAL ,"16")        
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch3:Status-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Ch3:Status-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 24")
     field(PINI,"YES")    
     field(VAL ,"16")      
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Ch4:Status-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Ch4:Status-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 28")
     field(PINI,"YES")    
     field(VAL ,"16")      
@@ -159,20 +159,20 @@ record(ai,"$(P){$(NO)}Temp:Rear-I"){
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Serial:Number-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Serial:Number-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 48")
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Model:Number-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Model:Number-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 52")
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Firmware:Version-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Firmware:Version-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 56")
     field(SCAN,"I/O Intr")
 }
@@ -201,8 +201,8 @@ record(ai,"$(P){$(NO)}Watchdog:Flag-I"){
     field(SCAN,"I/O Intr")
 }
 
-record(longin,"$(P){$(NO)}Frame:End-I"){
-    field(DTYP, "PSC Reg")
+record(ai,"$(P){$(NO)}Frame:End-I"){
+    field(DTYP, "PSC Reg F32")
     field(INP , "@pscudp$(NO) 15 76")
     field(SCAN,"I/O Intr")
 }

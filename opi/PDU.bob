@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-12-08 07:29:07 by mead-->
+<!--Saved on 2025-12-08 11:51:09 by mead-->
 <display version="2.0.0">
   <name>PDU1</name>
   <width>1000</width>
@@ -962,7 +962,7 @@
         </font>
       </font>
       <background_color>
-        <color red="128" green="200" blue="200">
+        <color name="Write_Background" red="128" green="255" blue="255">
         </color>
       </background_color>
       <tooltip>$(actions)</tooltip>
@@ -974,7 +974,7 @@
       <actions>
         <action type="write_pv">
           <pv_name>$(P){$(N)}Ch1:State-SP</pv_name>
-          <value>CHAN1-OFF</value>
+          <value>CH1-OFF</value>
           <description>WritePV</description>
         </action>
       </actions>
@@ -1232,7 +1232,7 @@
       <actions>
         <action type="write_pv">
           <pv_name>$(P){$(N)}Ch2:State-SP</pv_name>
-          <value>CH1-ON</value>
+          <value>CH2-ON</value>
           <description>WritePV</description>
         </action>
       </actions>
@@ -1258,7 +1258,7 @@
       <actions>
         <action type="write_pv">
           <pv_name>$(P){$(N)}Ch2:State-SP</pv_name>
-          <value>CH1-OFF</value>
+          <value>CH2-OFF</value>
           <description>WritePV</description>
         </action>
       </actions>
@@ -1536,7 +1536,6 @@
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
     </font>
-    <format>1</format>
     <precision>0</precision>
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
