@@ -10,6 +10,7 @@
 
 # Local configuration files
 /configure/*.local
+config
 
 # iocBoot generated files
 /iocBoot/*ioc*/cdCommands
